@@ -77,7 +77,7 @@ public class GameManager {
 		gameStatus=GameStatus.PLAYING;
 	}
 	
-	//Getter and Setters
+	//Getters and Setters
 	public ArrayList<Square> getSquaresList()
 	{
 		return squaresList;

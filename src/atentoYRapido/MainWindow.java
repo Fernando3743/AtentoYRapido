@@ -20,38 +20,34 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class GUIGridBagLayout extends JFrame 
+public class MainWindow extends JFrame 
 {
 	//Fields 
 	private MainMenuPanel mainMenu;
 	private JButton playButton;
 	private Listener eventListener;
+	private MainWindow mainWindow;
+	private GameManager gameManager;
 	
 	//Methods
-	public GUIGridBagLayout()
+	public MainWindow()
 	{
-		initMainMenu();
-		
-		this.setTitle("Rapido y Atento");
-		this.setResizable(false);
-		this.pack();
-		//this.setSize(1024,640);
-		this.setLocationRelativeTo(null);
-		this.setVisible(true);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		gameManager = new GameManager();
+		//Setting up the event listener
+		eventListener = new Listener();	
+		mainMenu = new MainMenuPanel();
+		mainWindow = this;
 	}
 	
-	private void initGUI()
+	private void loadLevel(int level)
 	{
+		this.getContentPane().setLayout(new GridBagLayout());
+		GridBagConstraints constrains = new GridBagConstraints();
 		
 	}	
 	
-	private void initMainMenu()
-	{		
-		//Setting up the event listener
-		eventListener = new Listener();
-		
-		mainMenu = new MainMenuPanel();
+	public void initMainMenu()
+	{				
 		mainMenu.setLayout(new BoxLayout(mainMenu,BoxLayout.Y_AXIS));
 		ImageIcon playButtonIcon = new ImageIcon(getClass().getResource("/images/play.png"));
 		ImageIcon scaledButton = new ImageIcon(playButtonIcon.getImage().getScaledInstance(180, 180,Image.SCALE_DEFAULT));
@@ -73,6 +69,14 @@ public class GUIGridBagLayout extends JFrame
 		mainMenu.add(playButton);
 
 		add(mainMenu);
+			
+		this.setTitle("Atento y Rapido");
+		this.setResizable(false);
+		this.pack();
+		//this.setSize(1024,640);
+		this.setLocationRelativeTo(null);
+		this.setVisible(true);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
 	private class Listener implements ActionListener, MouseListener
@@ -84,6 +88,8 @@ public class GUIGridBagLayout extends JFrame
 			if(event.getSource()==playButton)
 			{
 				System.out.println("Just clicked!!");
+				mainMenu.setVisible(false);
+				mainWindow.remove(mainMenu);
 			}
 		}
 

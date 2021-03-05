@@ -23,7 +23,8 @@ public class PrincipalAtentoYRapido {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				GUIGridBagLayout window = new GUIGridBagLayout();
+				MainWindow window = new MainWindow();
+				window.initMainMenu();
 			}
 			
 		});
