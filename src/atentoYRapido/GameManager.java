@@ -7,8 +7,9 @@ public class GameManager {
 	
 	//Fields
 	private GameStatus gameStatus;
-	private int level;
+	private int level, points, lifes;
 	private ArrayList<Square> squaresList;
+	private ArrayList<Integer> usedDesigns;
 	
 	//Methods
 	public GameManager()
@@ -16,6 +17,7 @@ public class GameManager {
 		level=1;
 		squaresList = new ArrayList<Square>();
 		gameStatus=GameStatus.PLAYING;
+		lifes=3;
 	}
 	
 	public void startGame()
@@ -27,53 +29,60 @@ public class GameManager {
 			squaresList.add(new Square());
 		}
 		
-		for(Square square: squaresList )
-		{
-			square.updateDesign();
-		}
-		checkGameStatus();
-	}
-	
-	public void checkGameStatus()
-	{
+		usedDesigns = new ArrayList<Integer>();
+		
 		for(int i=0;i<squaresList.size();i++)
 		{
-			for(int j=0;j<squaresList.size();j++)
+			int potentialDesign = squaresList.get(i).updateDesign();
+			if(usedDesigns.contains(potentialDesign))
 			{
-				int index=0;
-				if(squaresList.get(i).getDesign()==squaresList.get(j).getDesign())
-				{
-					index++;
-					if(index>=2)
-					{
-						gameStatus = GameStatus.WIN;
-					}
-					
-				}
+				i--;
 			}
+			else
+			{
+				usedDesigns.add(potentialDesign);
+			}
+			
 		}
-		
 	}
 	
-	public void updateOneSquareDesign()
+	public void checkGameStatus(int i)
+	{
+		if(usedDesigns.contains(i))
+		{
+			gameStatus= GameStatus.WIN;
+		}
+		else
+		{
+			usedDesigns.add(i);
+		}		
+	}
+	
+	public int updateOneSquareDesign()
 	{
 		Random random = new Random();
-		int i = random.nextInt(level+3)+1;
+		Integer i = random.nextInt(level+3);
+		usedDesigns.remove((Integer)squaresList.get(i).getDesign());
 		squaresList.get(i).updateDesign();
-		checkGameStatus();
+		checkGameStatus(squaresList.get(i).getDesign());
+		return i;
 	}
 	
 	public void nextLevel()
 	{
 		level++;
 		squaresList.clear();
+		usedDesigns.clear();
 		gameStatus=GameStatus.PLAYING;
+		if(level>6)
+			level=6;
 	}
 	
 	public void restartGame()
 	{
 		level=1;
 		squaresList.clear();
+		usedDesigns.clear();
 		gameStatus=GameStatus.PLAYING;
 	}
 	
@@ -86,6 +95,36 @@ public class GameManager {
 	public GameStatus getGameStatus()
 	{
 		return gameStatus;
+	}
+	
+	public int getLevel()
+	{
+		return level;
+	}
+	
+	public int getPoints()
+	{
+		return points;
+	}
+	
+	public void addPoints(int pointsAmount)
+	{
+		points+=pointsAmount;
+	}
+	
+	public void loseALife() 
+	{
+		lifes--;
+		if(lifes<0)
+		{
+			gameStatus = GameStatus.LOSE;
+		}
+		
+	}
+	
+	public int getLifes()
+	{
+		return lifes;
 	}
 	
 }
