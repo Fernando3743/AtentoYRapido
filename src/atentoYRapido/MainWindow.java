@@ -238,22 +238,27 @@ public class MainWindow extends JFrame
 			icon.setBorder(BorderFactory.createLineBorder(new Color(160,30,0),5,true));
 		}
 		
-		for(int i=0; i<gameManager.getLives() ;i++)
+		if(gameManager.getLives()<3)
 		{
-			lifeIcons.get(i).setIcon(new ImageIcon(
-										new ImageIcon("src/images/heart.png")
-										.getImage().getScaledInstance(60, 60,Image.SCALE_DEFAULT)));
-		}
-		
-		if(gameManager.getLives()<3 && gameManager.getLives()>=0)
-		{
-			for(int i=gameManager.getLives();i<3;i++)
+			for(int i=0;i<Math.abs(gameManager.getLives()-3);i++)
 			{
 				lifeIcons.get(i).setIcon(new ImageIcon(
 						new ImageIcon("src/images/greyHeart.png")
 						.getImage().getScaledInstance(60, 60,Image.SCALE_DEFAULT)));
 			}
 		}
+		
+		if(gameManager.getLives()>0)
+		{
+			
+			for(int i= gameManager.getLives(); i<3 ;i++)
+			{
+				lifeIcons.get(i).setIcon(new ImageIcon(
+											new ImageIcon("src/images/heart.png")
+											.getImage().getScaledInstance(60, 60,Image.SCALE_DEFAULT)));
+			}
+		}
+		
 		
 		pointsAmount.setText(String.valueOf(gameManager.getPoints()));
 		this.setTitle("Level "+gameManager.getLevel());

@@ -115,7 +115,7 @@ public class GameManager {
 		usedDesigns.clear();
 		gameStatus=GameStatus.PLAYING;
 		if(level>6)
-			level=6;
+			level = 6;
 	}
 	
 	/**
