@@ -1,29 +1,39 @@
-/**
- * 
+/*
+ * Programacion interactiva
+ * Author: Luis Fernando Lara S - 2024730-3743
+ * Email: luis.fernando.lara@correounivalle.edu.co
+ * Atento y Rapido Miniproyecto
  */
 package atentoYRapido;
 import java.util.Random;
 
+
+// TODO: Auto-generated Javadoc
 /**
- * @author ferna
- *
+ * The Class Square.
+ * This class simulates a square, which contains a design.
  */
-public class Square {
+public class Square 
+{
 	
 	//Fields
 	private int design;	
-	private boolean shown = false;
 	
 	//Methods
 	
 	/**
-	 * The main method.
+	 * Constructor.
 	 */
 	public Square()
 	{
 		
 	}
 	
+	/**
+	 * Update design.
+	 * Updates the square's design.
+	 * @return the square's design.
+	 */
 	public int updateDesign()
 	{
 		Random random = new Random();
@@ -31,23 +41,25 @@ public class Square {
 		return design;
 	}
 	
+	/**
+	 * Gets the design.
+	 *
+	 * @return the square's design
+	 */
 	public int getDesign()
 	{
 		return design;		
 	}
 	
-	public boolean getShown()
-	{
-		return shown;
-	}
 	
-	public void resetShown()
+	/**
+	 * Sets the design.
+	 *
+	 * @param design the new design
+	 */
+	public void setDesign(int design)
 	{
-		shown=false;
-	}
-	public void setDesign(int i)
-	{
-		design = i;
+		this.design = design;
 	}
 
 }

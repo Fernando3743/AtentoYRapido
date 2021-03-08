@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"atentoYRapido","l":"GameManager"},{"p":"atentoYRapido","l":"GameStatus"},{"p":"atentoYRapido","l":"MainWindow"},{"p":"atentoYRapido","l":"Panel"},{"p":"atentoYRapido","l":"PrincipalAtentoYRapido"},{"p":"atentoYRapido","l":"Square"},{"p":"atentoYRapido","l":"Title"}];updateSearchResults();

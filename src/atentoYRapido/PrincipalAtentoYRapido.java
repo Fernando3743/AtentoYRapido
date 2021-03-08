@@ -1,18 +1,25 @@
-/**
- * 
+/*
+ * Programacion interactiva
+ * Author: Luis Fernando Lara S - 2024730-3743
+ * Email: luis.fernando.lara@correounivalle.edu.co
+ * Atento y Rapido Miniproyecto
  */
 package atentoYRapido;
 
 import java.awt.EventQueue;
 
+
+// TODO: Auto-generated Javadoc
 /**
- * @author ferna
- *
+ * The Class PrincipalAtentoYRapido.
+ * Contains the main method and starts the program.
  */
 public class PrincipalAtentoYRapido {
 
 	/**
-	 * @param args
+	 * The main method.
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(String[] args) 
 	{
@@ -24,7 +31,6 @@ public class PrincipalAtentoYRapido {
 			public void run() {
 				// TODO Auto-generated method stub
 				MainWindow window = new MainWindow();
-				window.initMainMenu();
 			}
 			
 		});
